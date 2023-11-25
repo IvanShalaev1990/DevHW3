@@ -24,14 +24,12 @@ class SumCalculatorImplTest {
     @Order(1)
     @DisplayName("Sum should return sum of all prime number from given number when number is passed")
     void sumShouldReturnSumOfAllPrimeNumberFromGivenNumberWhenNumberIsPassed() {
-        Map<Integer, Integer> testCase = new LinkedHashMap<>();
-        testCase.put(1, 1);
-        testCase.put(2, 3);
-        testCase.put(3, 6);
-        testCase.forEach((given, expected) ->
-                Assertions.assertEquals(expected, sumCalculator.sum(given),
-                        String.format(
-                                "Expected - %d, given - %d, actual - %d", expected, given, sumCalculator.sum(given))));
+        int[] testCase = {1,2,3};
+        Assertions.assertAll(
+                ()-> assertEquals(1,sumCalculator.sum(testCase[0])),
+                ()-> assertEquals(3,sumCalculator.sum(testCase[1])),
+                ()-> assertEquals(6,sumCalculator.sum(testCase[2]))
+        );
     }
 
     @Test
